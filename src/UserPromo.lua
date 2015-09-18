@@ -67,28 +67,37 @@ function getRewards()
 	}
 	screen:insert(scrView)
     
+    local title = display.newText({
+        text = "Recompensas disponibles:", 
+        x = 180, y = 20, 
+        font = native.systemFont, width = 300,  
+        fontSize = 18, align = "left"
+    })
+    title:setFillColor( 1 )
+    scrView:insert( title )
+    
     
     -- Palabras fondo
     for z = 1, #rewards, 1 do 
         
         -- Email's
-        local emailBg1 = display.newRoundedRect( 250, (z*100) - 40, 450, 70, 10 )
+        local emailBg1 = display.newRoundedRect( 250, (z*100)- 20, 450, 70, 10 )
         emailBg1:setFillColor( 0, 160/255, 220/255 )
         emailBg1.alpha = .4
         scrView:insert( emailBg1 )
-        local emailBg2 = display.newRoundedRect( 250, (z*100) - 40, 440, 60, 10 )
+        local emailBg2 = display.newRoundedRect( 250, (z*100)- 20, 440, 60, 10 )
         emailBg2:setFillColor( 1 )
         scrView:insert( emailBg2 )
-        local emailBg3 = display.newRect( 420, (z*100) - 40, 80, 60 )
+        local emailBg3 = display.newRect( 420, (z*100)- 20, 80, 60 )
         emailBg3:setFillColor( 0, 173/255, 238/255 )
         scrView:insert( emailBg3 )
-        local emailBg4 = display.newRoundedRect( 430, (z*100) - 40, 80, 60, 10 )
+        local emailBg4 = display.newRoundedRect( 430, (z*100)- 20, 80, 60, 10 )
         emailBg4:setFillColor( 0, 173/255, 238/255 )
         scrView:insert( emailBg4 )
         
         local rName = display.newText({
             text = rewards[z].text, 
-            x = 200, y = (z*100) - 40, 
+            x = 200, y = (z*100)- 20, 
             font = native.systemFont, width = 300,  
             fontSize = 21, align = "left"
         })
@@ -97,7 +106,7 @@ function getRewards()
         
         local rPoints = display.newText({
             text = rewards[z].points, 
-            x = 430, y = (z*100) - 40, 
+            x = 430, y = (z*100)- 20, 
             font = native.systemFontBold,  
             fontSize = 28, align = "center"
         })
