@@ -9,4 +9,8 @@ display.setDefault( "background", 2/255, 191/255, 1 )
 
 local storyboard = require('storyboard')
 
+<<<<<<< HEAD
 storyboard.gotoScene("src.Home")
+=======
+storyboard.gotoScene("src.CheckIn")
+>>>>>>> origin/master

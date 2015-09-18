@@ -10,6 +10,7 @@
 -- Includes
 local widget = require( "widget" )
 local storyboard = require( "storyboard" )
+local qrscanner = require('plugin.qrscanner')
 local fxTap = audio.loadSound( "fx/click.wav")
 
 -- Grupos y Contenedores
@@ -156,14 +157,30 @@ function scene:createScene( event )
     local iconPhoto = display.newImage(screen, "img/iconPhoto.png")
     iconPhoto:translate( midW - 125, 220 )
     
-    local lblMess = display.newText({
-        text = "COLOCA EL CÓDIGO\nDE CLIENTE FRENTE\nA LA CAMARA", 
-        x = midW + 50, y = 220,  
+    local lblMess1 = display.newText({
+        text = "COLOCA EL CÓDIGO", width = 300,
+        x = midW + 80, y = 198,  
         font = native.systemFontBold,   
         fontSize = 20, align = "left"
     })
-    lblMess:setFillColor( 0, 173/255, 238/255 )
-    screen:insert( lblMess )
+    lblMess1:setFillColor( 0, 173/255, 238/255 )
+    screen:insert( lblMess1 )
+    local lblMess2 = display.newText({
+        text = "DE CLIENTE FRENTE", width = 300, 
+        x = midW + 80, y = 220,  
+        font = native.systemFontBold,   
+        fontSize = 20, align = "left"
+    })
+    lblMess2:setFillColor( 0, 173/255, 238/255 )
+    screen:insert( lblMess2 )
+    local lblMess3 = display.newText({
+        text = "A LA CAMARA", width = 300, 
+        x = midW + 80, y = 242,  
+        font = native.systemFontBold,   
+        fontSize = 20, align = "left"
+    })
+    lblMess3:setFillColor( 0, 173/255, 238/255 )
+    screen:insert( lblMess3 )
     
     -- Photo
     local photoBg1 = display.newRect( screen, midW, 500, 400, 400 )
@@ -175,7 +192,11 @@ function scene:createScene( event )
 end	
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
-    
+    print('QR Code')
+    local function listener(message)
+        print('QR Code message: ' .. tostring(message))
+    end
+    qrscanner.show(listener)
 end
 
 -- Remove Listener

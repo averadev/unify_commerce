@@ -139,14 +139,22 @@ function scene:createScene( event )
     local iconVisit = display.newImage(screen, "img/iconVisit.png")
     iconVisit:translate( (midW*1.55) - 110, midH )
     
-    local lblJoin = display.newText({
-        text = "REGISTRA\nTU VISITA", 
-        x = (midW*1.55)+50, y = midH,  
+    local lblJoin1 = display.newText({
+        text = "REGISTRA", width = 200,
+        x = (midW*1.55)+50, y = midH - 18,  
         font = native.systemFont,   
         fontSize = 35, align = "left"
     })
-    lblJoin:setFillColor( 1 )
-    screen:insert( lblJoin )
+    lblJoin1:setFillColor( 1 )
+    screen:insert( lblJoin1 )
+    local lblJoin2 = display.newText({
+        text = "TU VISITA", width = 200,
+        x = (midW*1.55)+50, y = midH + 18,  
+        font = native.systemFont,   
+        fontSize = 35, align = "left"
+    })
+    lblJoin2:setFillColor( 1 )
+    screen:insert( lblJoin2 )
     
 	local lblWeb = display.newText({
         text = "IUPI  web: www.iupi.com", 

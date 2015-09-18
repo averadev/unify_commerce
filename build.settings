@@ -5,6 +5,10 @@
 
 settings =
 {
+
+    plugins = {  
+        ["plugin.qrscanner"] = {publisherId = "com.spiralcodestudio"}
+    },
 	
 	orientation =
 	{

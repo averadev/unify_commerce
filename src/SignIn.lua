@@ -22,6 +22,7 @@ local intH = display.contentHeight
 local midW = display.contentWidth / 2
 local midH = display.contentHeight / 2
 local h = display.topStatusBarContentHeight
+local txtEmail1, txtEmail2
 
 -- Arreglos
 local words = { { size = 40, x = 100, y = 100, text = "RECOMPENSAS" },
@@ -149,7 +150,7 @@ function scene:createScene( event )
     emailBg1.alpha = .4
     local emailBg2 = display.newRoundedRect( screen, midW + 100, 250, 400, 60, 10 )
     emailBg2:setFillColor( 1 )
-    local txtEmail1 = native.newTextField( midW + 100, 250, 380, 50 )
+    txtEmail1 = native.newTextField( midW + 100, 250, 380, 30 )
     txtEmail1.inputType = "email"
     txtEmail1.hasBackground = false
     txtEmail1.placeholder = "Escribe tu Correo"
@@ -161,47 +162,47 @@ function scene:createScene( event )
     reemailBg1.alpha = .4
     local reemailBg2 = display.newRoundedRect( screen, midW + 100, 335, 400, 60, 10 )
     reemailBg2:setFillColor( 1 )
-    local txtEmail2 = native.newTextField( midW + 100, 335, 380, 50 )
+    txtEmail2 = native.newTextField( midW + 100, 335, 380, 30 )
     txtEmail2.inputType = "email"
     txtEmail2.hasBackground = false
     txtEmail2.placeholder = "Escribelo de nuevo"
     txtEmail2:addEventListener( "userInput", onTxtFocus )
 	screen:insert(txtEmail2)
     
-    local codigoBg1 = display.newRoundedRect( screen, midW + 100, 410, 410, 50, 10 )
+    local codigoBg1 = display.newRoundedRect( screen, midW + 100, 420, 410, 70, 10 )
     codigoBg1:setFillColor( 0, 160/255, 220/255 )
     codigoBg1.alpha = .4
-    local codigoBg2 = display.newRoundedRect( screen, midW + 100, 410, 400, 40, 10 )
+    local codigoBg2 = display.newRoundedRect( screen, midW + 100, 420, 400, 60, 10 )
     codigoBg2:setFillColor( 1 )
     local lblCodigo = display.newText({
         text = "Registra tu tarjeta IUPI", 
-        x = midW + 50, y = 410, 
+        x = midW + 50, y = 420, 
         font = native.systemFont,    
         fontSize = 18, align = "left"
     })
     lblCodigo:setFillColor( .3 )
     screen:insert( lblCodigo )
-    local checkBg1 = display.newRoundedRect( screen, midW - 70, 410, 30, 30, 3 )
+    local checkBg1 = display.newRoundedRect( screen, midW - 70, 420, 30, 30, 3 )
     checkBg1:setFillColor( .5 )
-    local checkBg2 = display.newRoundedRect( screen, midW - 70, 410, 24, 24, 3 )
+    local checkBg2 = display.newRoundedRect( screen, midW - 70, 420, 24, 24, 3 )
     checkBg2:setFillColor( 1 )
     
-    local continueBg1 = display.newRect( screen, midW + 200, 475, 210, 50 )
+    local continueBg1 = display.newRect( screen, midW + 200, 495, 210, 50 )
     continueBg1:setFillColor( 0, 160/255, 220/255 )
     continueBg1.alpha = .4
     continueBg1:addEventListener( 'tap', tapUserPromo)
-    local continueBg2 = display.newRect( screen, midW + 200, 475, 200, 40 )
+    local continueBg2 = display.newRect( screen, midW + 200, 495, 200, 40 )
     continueBg2:setFillColor( 2/255, 191/255, 1 )
     local lblContinue = display.newText({
         text = "CONTINUAR", 
-        x = midW + 220, y = 475, 
+        x = midW + 220, y = 495, 
         font = native.systemFont,    
         fontSize = 22, align = "left"
     })
     lblContinue:setFillColor( 1 )
     screen:insert( lblContinue )
     local iconContinue = display.newImage(screen, "img/iconContinue.png")
-    iconContinue:translate( midW + 130, 475 )
+    iconContinue:translate( midW + 130, 495 )
     
 end	
 -- Called immediately after scene has moved onscreen:
@@ -211,6 +212,14 @@ end
 
 -- Remove Listener
 function scene:exitScene( event )
+    if txtEmail1 then
+        txtEmail1:removeSelf()
+        txtEmail1 = nil
+    end
+    if txtEmail2 then
+        txtEmail2:removeSelf()
+        txtEmail2 = nil
+    end
 end
 
 scene:addEventListener("createScene", scene )
