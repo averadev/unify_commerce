@@ -87,7 +87,7 @@ function getRewards()
     local title = display.newText({
         text = "Recompensas disponibles:", 
         x = 180, y = 20, 
-        font = native.systemFont, width = 300,  
+        font = "Lato-Regular", width = 300,  
         fontSize = 18, align = "left"
     })
     title:setFillColor( 1 )
@@ -116,7 +116,7 @@ function getRewards()
         btnRewards[#btnRewards].rName = display.newText({
             text = rewards[z].text, 
             x = 200, y = (z*100)- 20, 
-            font = native.systemFont, width = 300,  
+            font = "Lato-Regular", width = 300,  
             fontSize = 21, align = "left"
         })
         btnRewards[#btnRewards].rName:setFillColor( .3 )
@@ -125,7 +125,7 @@ function getRewards()
         local rPoints = display.newText({
             text = rewards[z].points, 
             x = 430, y = (z*100)- 20, 
-            font = native.systemFontBold,  
+            font = "Lato-Bold",  
             fontSize = 28, align = "center"
         })
         rPoints:setFillColor( 1 )
@@ -203,7 +203,7 @@ function scene:createScene( event )
     local lblTitle1 = display.newText({
         text = "HOLA! Mauricio ... Bienvenido a La Parrillita.", 
         x = midW, y = 130,  
-        font = native.systemFontBold, width = 800, 
+        font = "Lato-Bold", width = 800, 
         fontSize = 28, align = "left"
     })
     lblTitle1:setFillColor( 1 )
@@ -225,7 +225,7 @@ function scene:createScene( event )
     local lblPoints1 = display.newText({
         text = "3245", 
         x = midW - 305, y = 435,  
-        font = native.systemFontBold, 
+        font = "Lato-Bold", 
         fontSize = 55, align = "center"
     })
     lblPoints1:setFillColor( 44/255, 204/255, 113/255 )
@@ -233,7 +233,7 @@ function scene:createScene( event )
     local lblPoints2 = display.newText({
         text = "PUNTOS", 
         x = midW - 305, y = 478,  
-        font = native.systemFontBold, 
+        font = "Lato-Bold", 
         fontSize = 30, align = "center"
     })
     lblPoints2:setFillColor( 2/255, 191/255, 1 )
@@ -241,7 +241,7 @@ function scene:createScene( event )
     local lblPoints3 = display.newText({
         text = "DISPONIBLES", 
         x = midW - 305, y = 500,  
-        font = native.systemFontBold, 
+        font = "Lato-Regular", 
         fontSize = 19, align = "center"
     })
     lblPoints3:setFillColor( 2/255, 191/255, 1 )

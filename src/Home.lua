@@ -98,7 +98,7 @@ function scene:createScene( event )
     local lblName = display.newText({
         text = "IUPI", 
         x = intW/4, y = midH - 50, 
-        font = "Lato-Regular",   
+        font = "Lato-Bold",   
         fontSize = 90, align = "center"
     })
     lblName:setFillColor( 1 )
@@ -119,7 +119,7 @@ function scene:createScene( event )
     local lblWelcome = display.newText({
         text = "BIENVENIDO", 
         x = intW/4, y = midH + 60, 
-        font = "Lato-Regular",   
+        font = "Lato-Bold",   
         fontSize = 35, align = "center"
     })
     lblWelcome:setFillColor( 1 )
@@ -142,7 +142,7 @@ function scene:createScene( event )
     local lblJoin1 = display.newText({
         text = "REGISTRA", width = 200,
         x = (midW*1.55)+50, y = midH - 18,  
-        font = native.systemFont,   
+        font = "Lato-Bold",   
         fontSize = 35, align = "left"
     })
     lblJoin1:setFillColor( 1 )
@@ -150,7 +150,7 @@ function scene:createScene( event )
     local lblJoin2 = display.newText({
         text = "TU VISITA", width = 200,
         x = (midW*1.55)+50, y = midH + 18,  
-        font = "Lato-Regular",   
+        font = "Lato-Bold",   
         fontSize = 35, align = "left"
     })
     lblJoin2:setFillColor( 1 )

@@ -141,7 +141,7 @@ function scene:createScene( event )
     local lblTitle1 = display.newText({
         text = "HOLA! ...", 
         x = midW, y = 130,  
-        font = native.systemFontBold, width = 800, 
+        font = "Lato-Bold", width = 800, 
         fontSize = 28, align = "left"
     })
     lblTitle1:setFillColor( 1 )
@@ -150,7 +150,7 @@ function scene:createScene( event )
     local lblTitle2 = display.newText({
         text = "Bienvenido a IUPI, estas apunto de recibir recompensas, solo escribe tu correo:", 
         x = midW, y = 165, 
-        font = native.systemFont, width = 800,   
+        font = "Lato-Regular", width = 800,   
         fontSize = 22, align = "left"
     })
     lblTitle2:setFillColor( 1 )
@@ -167,7 +167,7 @@ function scene:createScene( event )
     local lblProfile = display.newText({
         text = "REGISTRATE", 
         x = midW - 250, y = 355, 
-        font = native.systemFont,    
+        font = "Lato-Bold",    
         fontSize = 18, align = "center"
     })
     lblProfile:setFillColor( 0, 173/255, 238/255 )
@@ -207,7 +207,7 @@ function scene:createScene( event )
     local lblCodigo = display.newText({
         text = "Registra tu tarjeta IUPI", 
         x = midW + 50, y = 420, 
-        font = native.systemFont,    
+        font = "Lato-Regular",    
         fontSize = 18, align = "left"
     })
     lblCodigo:setFillColor( .3 )
@@ -229,7 +229,7 @@ function scene:createScene( event )
     local lblContinue = display.newText({
         text = "CONTINUAR", 
         x = midW + 220, y = 500, 
-        font = native.systemFont,    
+        font = "Lato-Bold",    
         fontSize = 22, align = "left"
     })
     lblContinue:setFillColor( .3 )

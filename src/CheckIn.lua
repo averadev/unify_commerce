@@ -126,7 +126,7 @@ function scene:createScene( event )
     local lblWeb = display.newText({
         text = "¿Aún no eres IUPER?", 
         x = midW - 255, y = 80,  
-        font = native.systemFontBold,   
+        font = "Lato-Bold",   
         fontSize = 24, align = "left"
     })
     lblWeb:setFillColor( 1 )
@@ -134,8 +134,8 @@ function scene:createScene( event )
     
     local lblWeb = display.newText({
         text = "Afiliate ahora, es rápido y muy fácil:", 
-        x = midW + 33, y = 80,  
-        font = native.systemFont,   
+        x = midW + 25, y = 80,  
+        font = "Lato-Regular",   
         fontSize = 20, align = "left"
     })
     lblWeb:setFillColor( 1 )
@@ -151,7 +151,7 @@ function scene:createScene( event )
     local lblWeb = display.newText({
         text = "AFILIARME", 
         x = midW + 325, y = 80,  
-        font = native.systemFontBold,   
+        font = "Lato-Bold",   
         fontSize = 22, align = "center"
     })
     lblWeb:setFillColor( .3 )
