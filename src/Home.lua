@@ -82,7 +82,7 @@ function scene:createScene( event )
         local tempWord = display.newText({
             text = words[z].text, 
             x = words[z].x, y = words[z].y, 
-            font = native.systemFont,   
+            font = "Lato-Bold",   
             fontSize = words[z].size, align = "center"
         })
         tempWord.rotation = -52
@@ -98,7 +98,7 @@ function scene:createScene( event )
     local lblName = display.newText({
         text = "IUPI", 
         x = intW/4, y = midH - 50, 
-        font = native.systemFont,   
+        font = "Lato-Regular",   
         fontSize = 90, align = "center"
     })
     lblName:setFillColor( 1 )
@@ -110,7 +110,7 @@ function scene:createScene( event )
     local lblSubName = display.newText({
         text = "Recompensarte se siente bien ...", 
         x = intW/4, y = midH + 25, 
-        font = native.systemFont,   
+        font = "Lato-Regular",   
         fontSize = 16, align = "center"
     })
     lblSubName:setFillColor( 1 )
@@ -119,7 +119,7 @@ function scene:createScene( event )
     local lblWelcome = display.newText({
         text = "BIENVENIDO", 
         x = intW/4, y = midH + 60, 
-        font = native.systemFont,   
+        font = "Lato-Regular",   
         fontSize = 35, align = "center"
     })
     lblWelcome:setFillColor( 1 )
@@ -150,7 +150,7 @@ function scene:createScene( event )
     local lblJoin2 = display.newText({
         text = "TU VISITA", width = 200,
         x = (midW*1.55)+50, y = midH + 18,  
-        font = native.systemFont,   
+        font = "Lato-Regular",   
         fontSize = 35, align = "left"
     })
     lblJoin2:setFillColor( 1 )
@@ -159,7 +159,7 @@ function scene:createScene( event )
 	local lblWeb = display.newText({
         text = "IUPI  web: www.iupi.com", 
         x = midW, y = intH - 50,  
-        font = native.systemFont,   
+        font = "Lato-Regular",   
         fontSize = 24, align = "left"
     })
     lblWeb:setFillColor( 1 )

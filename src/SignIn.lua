@@ -23,6 +23,7 @@ local midW = display.contentWidth / 2
 local midH = display.contentHeight / 2
 local h = display.topStatusBarContentHeight
 local txtEmail1, txtEmail2
+local qr1, qr2, qr3, iconCheck
 
 -- Arreglos
 local words = { { size = 40, x = 100, y = 100, text = "RECOMPENSAS" },
@@ -42,10 +43,33 @@ local words = { { size = 40, x = 100, y = 100, text = "RECOMPENSAS" },
 ---------------------------------------------------------------------------------
 -- FUNCIONES
 ---------------------------------------------------------------------------------
+function tapReturn(event)
+    audio.play( fxTap )
+    storyboard.removeScene( "src.Home" )
+    storyboard.gotoScene("src.Home", { time = 400, effect = "crossFade" } )
+end
+
 function tapUserPromo(event)
     audio.play( fxTap )
     storyboard.removeScene( "src.UserPromo" )
     storyboard.gotoScene("src.UserPromo", { time = 400, effect = "crossFade" } )
+end
+
+function tapQR(event)
+    audio.play( fxTap )
+    if qr3.alpha < .1 then
+        iconCheck.alpha = 1
+        transition.to( qr1, { height = 260, width = 260, alpha = 1, time = 200 })
+        transition.to( qr2, { height = 250, width = 250, alpha = 1, time = 200 })
+        transition.to( qr3, { alpha = 1, time = 700, delay = 500 })
+    else
+        iconCheck.alpha = 0
+        transition.to( qr3, { alpha = 0, time = 300 })
+        transition.to( qr3, { alpha = 0, delay = 400 })
+        transition.to( qr1, { height = 0, width = 0, alpha = 0, time = 200, delay = 300 })
+        transition.to( qr2, { height = 0, width = 0, alpha = 0, time = 200, delay = 300 })
+        
+    end
 end
 
 function onTxtFocus(event)
@@ -107,6 +131,11 @@ function scene:createScene( event )
     })
     lblWeb:setFillColor( 1 )
     screen:insert( lblWeb )
+    
+    -- Return
+    local iconReturn = display.newImage(screen, "img/iconReturn.png")
+    iconReturn:translate( midW - 455, 80 )
+    iconReturn:addEventListener( 'tap', tapReturn)
     
     -- Title
     local lblTitle1 = display.newText({
@@ -172,6 +201,7 @@ function scene:createScene( event )
     local codigoBg1 = display.newRoundedRect( screen, midW + 100, 420, 410, 70, 10 )
     codigoBg1:setFillColor( 0, 160/255, 220/255 )
     codigoBg1.alpha = .4
+    codigoBg1:addEventListener( 'tap', tapQR)
     local codigoBg2 = display.newRoundedRect( screen, midW + 100, 420, 400, 60, 10 )
     codigoBg2:setFillColor( 1 )
     local lblCodigo = display.newText({
@@ -186,23 +216,39 @@ function scene:createScene( event )
     checkBg1:setFillColor( .5 )
     local checkBg2 = display.newRoundedRect( screen, midW - 70, 420, 24, 24, 3 )
     checkBg2:setFillColor( 1 )
+    iconCheck = display.newImage(screen, "img/iconCheck.png")
+    iconCheck:translate( midW - 65, 417 )
+    iconCheck.alpha = 0
     
-    local continueBg1 = display.newRect( screen, midW + 200, 495, 210, 50 )
+    local continueBg1 = display.newRect( screen, midW + 200, 500, 210, 60 )
     continueBg1:setFillColor( 0, 160/255, 220/255 )
     continueBg1.alpha = .4
     continueBg1:addEventListener( 'tap', tapUserPromo)
-    local continueBg2 = display.newRect( screen, midW + 200, 495, 200, 40 )
-    continueBg2:setFillColor( 2/255, 191/255, 1 )
+    local continueBg2 = display.newRect( screen, midW + 200, 500, 200, 50 )
+    continueBg2:setFillColor( .97 )
     local lblContinue = display.newText({
         text = "CONTINUAR", 
-        x = midW + 220, y = 495, 
+        x = midW + 220, y = 500, 
         font = native.systemFont,    
         fontSize = 22, align = "left"
     })
-    lblContinue:setFillColor( 1 )
+    lblContinue:setFillColor( .3 )
     screen:insert( lblContinue )
     local iconContinue = display.newImage(screen, "img/iconContinue.png")
-    iconContinue:translate( midW + 130, 495 )
+    iconContinue:translate( midW + 130, 500 )
+    
+    
+    qr1 = display.newRect( screen, midW - 250, 335, 0, 0 )
+    qr1:setFillColor( 0, 160/255, 220/255 )
+    qr1.alpha = 0
+    qr2 = display.newRect( screen, midW - 250, 335, 0, 0 )
+    qr2:setFillColor( .97 )
+    qr2.alpha = 0
+    qr3 = display.newImage(screen, "img/qrExample.png")
+    qr3.height = 250
+    qr3.width = 250
+    qr3:translate( midW - 250, 335 )
+    qr3.alpha = 0
     
 end	
 -- Called immediately after scene has moved onscreen:

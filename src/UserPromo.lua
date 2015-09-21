@@ -22,6 +22,7 @@ local intH = display.contentHeight
 local midW = display.contentWidth / 2
 local midH = display.contentHeight / 2
 local h = display.topStatusBarContentHeight
+local btnRewards = {}
 
 -- Arreglos
 local words = { { size = 40, x = 100, y = 100, text = "RECOMPENSAS" },
@@ -46,8 +47,24 @@ local rewards = { { points = 40, text = "CERVEZA CHOPE" },
 ---------------------------------------------------------------------------------
 -- FUNCIONES
 ---------------------------------------------------------------------------------
-function tapHome(event)
+function tapReturn(event)
+    audio.play( fxTap )
+    storyboard.removeScene( "src.Home" )
+    storyboard.gotoScene("src.Home", { time = 400, effect = "crossFade" } )
+end
+
+function tapReward(event)
+    audio.play( fxTap )
+    local t = event.target
     
+    -- Palabras fondo
+    for z = 1, #btnRewards, 1 do 
+        btnRewards[z]:setFillColor( 1 )
+        btnRewards[z].rName:setFillColor( .3 )
+    end
+    -- New selected
+    t:setFillColor( 253/255, 167/255, 0 )
+    t.rName:setFillColor( 1 )
 end
 
 function getRewards()
@@ -85,9 +102,10 @@ function getRewards()
         emailBg1:setFillColor( 0, 160/255, 220/255 )
         emailBg1.alpha = .4
         scrView:insert( emailBg1 )
-        local emailBg2 = display.newRoundedRect( 250, (z*100)- 20, 440, 60, 10 )
-        emailBg2:setFillColor( 1 )
-        scrView:insert( emailBg2 )
+        btnRewards[#btnRewards + 1] = display.newRoundedRect( 250, (z*100)- 20, 440, 60, 10 )
+        btnRewards[#btnRewards]:setFillColor( 1 )
+        btnRewards[#btnRewards]:addEventListener( 'tap', tapReward)
+        scrView:insert( btnRewards[#btnRewards] )
         local emailBg3 = display.newRect( 420, (z*100)- 20, 80, 60 )
         emailBg3:setFillColor( 0, 173/255, 238/255 )
         scrView:insert( emailBg3 )
@@ -95,14 +113,14 @@ function getRewards()
         emailBg4:setFillColor( 0, 173/255, 238/255 )
         scrView:insert( emailBg4 )
         
-        local rName = display.newText({
+        btnRewards[#btnRewards].rName = display.newText({
             text = rewards[z].text, 
             x = 200, y = (z*100)- 20, 
             font = native.systemFont, width = 300,  
             fontSize = 21, align = "left"
         })
-        rName:setFillColor( .3 )
-        scrView:insert( rName )
+        btnRewards[#btnRewards].rName:setFillColor( .3 )
+        scrView:insert( btnRewards[#btnRewards].rName )
         
         local rPoints = display.newText({
             text = rewards[z].points, 
@@ -112,11 +130,6 @@ function getRewards()
         })
         rPoints:setFillColor( 1 )
         scrView:insert( rPoints )
-        
-        if z == #rewards then
-            rName:setFillColor( 1 )
-            emailBg2:setFillColor( 253/255, 167/255, 0 )
-        end
         
     end
 end
@@ -180,6 +193,11 @@ function scene:createScene( event )
     })
     lblWeb:setFillColor( 1 )
     screen:insert( lblWeb )
+    
+    -- Return
+    local iconReturn = display.newImage(screen, "img/iconReturn.png")
+    iconReturn:translate( midW - 455, 80 )
+    iconReturn:addEventListener( 'tap', tapReturn)
     
     -- Title
     local lblTitle1 = display.newText({

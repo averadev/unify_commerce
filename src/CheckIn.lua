@@ -10,7 +10,6 @@
 -- Includes
 local widget = require( "widget" )
 local storyboard = require( "storyboard" )
-local qrscanner = require('plugin.qrscanner')
 local fxTap = audio.loadSound( "fx/click.wav")
 
 -- Grupos y Contenedores
@@ -42,6 +41,12 @@ local words = { { size = 40, x = 100, y = 100, text = "RECOMPENSAS" },
 ---------------------------------------------------------------------------------
 -- FUNCIONES
 ---------------------------------------------------------------------------------
+function tapReturn(event)
+    audio.play( fxTap )
+    storyboard.removeScene( "src.Home" )
+    storyboard.gotoScene("src.Home", { time = 400, effect = "crossFade" } )
+end
+
 function tapSignIn(event)
     audio.play( fxTap )
     storyboard.removeScene( "src.SignIn" )
@@ -105,6 +110,11 @@ function scene:createScene( event )
     lblWeb:setFillColor( 1 )
     screen:insert( lblWeb )
     
+    -- Return
+    local iconReturn = display.newImage(screen, "img/iconReturn.png")
+    iconReturn:translate( midW - 455, 80 )
+    iconReturn:addEventListener( 'tap', tapReturn)
+    
     -- Banner
     local bannerBg = display.newRect( screen, midW, 80, 810, 70 )
     bannerBg:setFillColor( 0, 160/255, 220/255 )
@@ -132,7 +142,7 @@ function scene:createScene( event )
     screen:insert( lblWeb )
     
     local afilBg = display.newRect( screen, midW + 300, 80, 190, 50 )
-    afilBg:setFillColor( 2/255, 191/255, 1 )
+    afilBg:setFillColor( .97 )
     afilBg:addEventListener( 'tap', tapSignIn)
     
     local iconJoin = display.newImage(screen, "img/iconJoin.png")
@@ -144,7 +154,7 @@ function scene:createScene( event )
         font = native.systemFontBold,   
         fontSize = 22, align = "center"
     })
-    lblWeb:setFillColor( 1 )
+    lblWeb:setFillColor( .3 )
     screen:insert( lblWeb )
     
     -- Message
@@ -186,17 +196,13 @@ function scene:createScene( event )
     local photoBg1 = display.newRect( screen, midW, 500, 400, 400 )
     photoBg1:setFillColor( 0, 160/255, 220/255 )
     photoBg1.alpha = .4
-    local photoBg2 = display.newRect( screen, midW, 500, 390, 390 )
-    photoBg2:setFillColor( 1 )
+    local qrExample = display.newImage(screen, "img/qrExample.png")
+    qrExample:translate( midW, 500 )
     
 end	
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
-    print('QR Code')
-    local function listener(message)
-        print('QR Code message: ' .. tostring(message))
-    end
-    qrscanner.show(listener)
+    
 end
 
 -- Remove Listener

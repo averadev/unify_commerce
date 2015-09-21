@@ -9,4 +9,4 @@ display.setDefault( "background", 2/255, 191/255, 1 )
 
 local storyboard = require('storyboard')
 
-storyboard.gotoScene("src.CheckIn")
+storyboard.gotoScene("src.Home")
